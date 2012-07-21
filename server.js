@@ -10,29 +10,20 @@ var express = require('express'),
   http = require('http');
 
 var app = express();
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .set('compress', true)
-    .use(nib())
-    .import('nib');
-}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
-  app.use(stylus.middleware({
-    src: __dirname + '/views',
-    dest: __dirname + '/public',
-    compile: compile
-  }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  app.use(require('connect-assets')());
   app.use(express['static'](__dirname + '/public'));
 });
+
+css.root = 'stylesheets'
 
 app.configure('development', function(){
   app.use(express.errorHandler());
