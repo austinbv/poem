@@ -1,7 +1,17 @@
 doctype 5
 html
   head
-    title= title
+    title 'What is up'
+
+    link(href='http://fonts.googleapis.com/css?family=Sonsie+One', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    != body
+  .fridge
+    .logo
+      | Fridge
+    .reflection
+    .handle
+      span
+        | Austin Vance
+    .shadow
+    block content

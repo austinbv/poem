@@ -5,12 +5,26 @@ require('coffee-script');
  */
 
 var express = require('express'),
+  stylus = require('stylus'),
+  nib = require('nib'),
   http = require('http');
 
 var app = express();
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .set('compress', true)
+    .use(nib())
+    .import('nib');
+}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
+  app.use(stylus.middleware({
+    src: __dirname + '/views',
+    dest: __dirname + '/public',
+    compile: compile
+  }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());

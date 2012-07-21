@@ -12,6 +12,7 @@ logs
 results
 
 node_modules/*
+public/stylesheets/*
 
 api_key.js
 npm-debug.log

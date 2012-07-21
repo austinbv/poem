@@ -1,0 +1,154 @@
+old-time-font = 'Sonsie One', cursive
+light-silver = darken(silver, 10%)
+silver = silver
+dark-silver = darken(silver, 50%)
+darker-silver = darken(silver, 90%)
+sheen = rgba(255, 255, 255, 0.3)
+fridge = #A0E0A9
+dark-fridge = fridge - #222
+
+* 
+  user-select none
+body 
+  background-image: -webkit-radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.3) 99%),
+    -webkit-radial-gradient(closest-side, transparent 98%, rgba(0,0,0,.3) 99%);
+  background-size 80px 80px
+  background-position 0 0, 40px 40px
+
+.fridge
+  position fixed
+  background-color #A0E0A9
+  border-radius top 100px
+  margin 2% 2% 0 2%
+  height 750px
+  width 900px
+  bottom 0
+  background-image linear-gradient(left, fridge, dark-fridge)
+  box-shadow inset -18px 0px 10px dark-fridge - #222,
+    inset 18px 0px 10px fridge + #111
+  
+  .reflection
+    background fridge + #111
+    opacity 0.3
+    position fixed
+    height 650px
+    width 150px
+    bottom 0
+    left 150px
+    border-radius top left 30px
+    box-shadow 0 0 5px 5px fridge + #111
+
+  .logo
+    transform rotate(-3deg)
+    font-family: old-time-font;
+    font-size 40px
+    color rgba(silver, 0.8)
+    text-shadow -1px -1px silver + #111,
+      1px 1px dark-silver
+    top 100px
+    left 370px
+    position: absolute
+    
+.handle
+  transform rotate(2deg)
+  background-image linear-gradient(left, 30% silver, dark-silver)
+  box-shadow inset -2px -2px 10px dark-silver
+  border-radius left 30px
+  position absolute
+  height 40px
+  width 300px
+  bottom 300px
+  right 80px
+  z-index 10
+
+  &:after /* Handle Base */
+    transform rotate(-2deg)
+    content ''
+    position absolute
+    height 70px
+    width 120px
+    background black
+    right -23px
+    bottom -15px
+    border-radius 12px
+    background-image linear-gradient(left, silver, silver - #222)
+    border 4px outset silver + #121212
+    box-shadow 3px 3px 10px 2px dark-fridge - #222
+
+  span
+    transform rotate(-2deg)
+    font-family old-time-font  
+    width 50px
+    display inline-block
+    position absolute
+    right 27px
+    bottom -2px
+    z-index 4
+    color rgba(silver - #111, 0.8)
+    text-shadow 1px 1px silver, -1px -1px dark-silver - #444
+    line-height 150%
+
+    &:before
+      content ''
+      height 20px
+      width 100px
+      border-top 4px silver groove
+      border-bottom 4px silver groove
+      right -35px
+      top -3px
+      z-index 4
+      position absolute
+
+    &:after 
+      content ''
+      height 2px
+      width 100px
+      height 2px
+      position absolute
+      border-bottom 4px silver groove
+      right -35px
+      bottom 0px
+
+.shadow /* Handle Shaddow */
+  content ''
+  position absolute
+  background dark-fridge
+  box-shadow 0 0 20px 20px dark-fridge
+  height 7px
+  width 200px
+  right 120px
+  border-radius bottom 30px
+  bottom 299px
+  z-index 1
+
+.post
+  display: none
+  background-image linear-gradient(left, 30% light-silver, darker-silver)
+  box-shadow 11px 7px 39px -2px
+  border-radius left 15px
+  position absolute
+  height 30px
+  width 40px
+  right 125px
+  bottom 135px
+  z-index 4
+ 
+p
+  padding 5px
+  top 20px
+  left 100px
+  border-right 2px solid black + #555
+  border-bottom 2px solid black + #555
+  position absolute
+  z-index 10
+  background darken(white, 3%)
+
+  &:hover
+    cursor move
+
+  &.floating
+    top 90px
+    left 250px
+    transform scale(1.2, 1.2) rotate(2deg)
+    box-shadow 20px 10px 20px 3px rgba(dark-fridge - #555, 0.9)
+    position absolute

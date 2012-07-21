@@ -18,4 +18,4 @@ describe 'the main page', ->
     expect(@browser.statusCode).to.equal 200
 
   it 'should have the words that were feteched', ->
-    expect(@browser.text 'body' ).to.equal 'hello'
+    expect(@browser.text '.magnets' ).to.equal 'hello'
