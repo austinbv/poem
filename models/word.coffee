@@ -1,17 +1,17 @@
 util = require 'util'
-EventEmitter = require('events').EventEmitter
 Wordnik = require 'wordnik'
 API_KEY = require '../api_key'
 wordnik = new Wordnik api_key: API_KEY
 
-class Word extends EventEmitter
+class Word
   constructor: (options) ->
     throw new Error "A word must be provided" unless options?.word
     @word = options.word
 
-  @getWords: ->
+  @getWords: (callback) ->
     @_wordnik.randomWords (e, result) =>
-      Word.emit 'wordsFetched', result
+      throw e if e
+      callback(result)
  
   @_wordnik: wordnik
 
@@ -19,5 +19,4 @@ class Word extends EventEmitter
     return result.map (wordnikWord) ->
       new Word word: wordnikWord.word
 
-Word.__proto__ = EventEmitter.prototype
 module.exports = Word

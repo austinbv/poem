@@ -2,11 +2,10 @@ Word = require '../../models/word'
 
 routes = (app) ->
   app.get '/', (req, res) ->
-    Word.once 'wordsFetched', (params) ->
+    Word.getWords (result) ->
       res.render "#{__dirname}/views/index",
-        words: params.map (word) -> word.word
-
-    Word.getWords()
+        layout: "#{__dirname}/views/layout"
+        words: result.map (word) -> word.word
 
 
 module.exports = routes

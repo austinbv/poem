@@ -28,14 +28,10 @@ describe 'Wordlist', ->
 
       spy = sinon.spy()
 
-      Word.on 'wordsFetched', (params) ->
-        spy(params)
-        expect(spy).have.been.calledWith [
-          {id: 1234, word: "hello"},
-          {id: 2345, word: "foo"},
-          {id: 3456, word: "goodbye"}
-        ]
-        done()
-
-      Word.getWords()
+      Word.getWords (result) -> spy(result); done()
   
+      expect(spy).have.been.calledWith [
+        {id: 1234, word: "hello"},
+        {id: 2345, word: "foo"},
+        {id: 3456, word: "goodbye"}
+      ]
