@@ -2,16 +2,18 @@ doctype 5
 html
   head
     title 'What is up'
-
     link(href='http://fonts.googleapis.com/css?family=Sonsie+One', rel='stylesheet', type='text/css')
+    != js('vendor')
+    != js('word')
+    != js('words')
     != css('style')
   body
-  .fridge
-    .logo
-      | Fridge
-    .reflection
-    .handle
-      span
-        | Austin Vance
-    .shadow
-    block content
+    .fridge
+      .logo
+        | Fridge
+      .reflection
+      .handle
+        span
+          | Austin Vance
+      .shadow
+      block content

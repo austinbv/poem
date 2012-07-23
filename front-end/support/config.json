@@ -1,0 +1,8 @@
+{
+  "test_dir": "./tests",
+  "src_files": [
+    "vendor",
+    "word",
+    "words"
+    ]
+}

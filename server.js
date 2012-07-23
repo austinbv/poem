@@ -24,6 +24,7 @@ app.configure(function(){
 });
 
 css.root = 'stylesheets'
+js.root = 'javascripts'
 
 app.configure('development', function(){
   app.use(express.errorHandler());
